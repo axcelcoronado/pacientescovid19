@@ -4,7 +4,7 @@
       <div class="form-group">
         <label for="nombre">Nombre:</label>
         <input
-          type="email"
+          type="text"
           class="form-control"
           id="nombre"
           placeholder="Nombre..."
