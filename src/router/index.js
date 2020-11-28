@@ -12,6 +12,12 @@ const routes = [
     name: 'Pacientes',
 
     component: () => import('../views/Pacientes.vue')
+  },
+  {
+    path: '/editar/:id',
+    name: 'Editar',
+
+    component: () => import('../views/Editar.vue')
   }
 ]
 

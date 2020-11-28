@@ -44,7 +44,9 @@
       </div>
       <div class="card-footer d-flex justify-content-center">
         <button class="btn btn-danger mx-2">Eliminar</button>
+        <router-link :to="{name:'Editar', params:{id:item.id}}">
         <button class="btn btn-warning mx-2">Editar</button>
+        </router-link>
       </div>
     </div>
   </div>

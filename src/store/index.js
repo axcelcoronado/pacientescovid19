@@ -3,11 +3,27 @@ import {db} from '../firebase'
 
 export default createStore({
   state: {
-    pacientes:[]
+    pacientes:[],
+    paciente: {
+      nombre: "",
+      edad: "",
+      cedula: "",
+      celular: "",
+      direccionPaciente: "",
+      fechaNacimiento: "",
+      direccionMuestra: "",
+      fechaMuestra: "",
+      email: "",
+      sintomas: [],
+      id: ''
+    },
   },
   mutations: {
     setPaciente(state, payload){
       state.pacientes = payload
+    },
+    setEditPaciente(state, payload){
+      state.paciente = payload
     }
   },
   actions: {
@@ -41,7 +57,34 @@ export default createStore({
         })
         commit('setPaciente', pacientes)
       })
-    }
+    },
+
+    getEditPaciente({commit}, idPaciente){
+      db.collection('pacientea').doc(idPaciente).get()
+      .then(doc =>{
+        let paciente = doc.data()
+        paciente.id = doc.id
+        commit('setEditPaciente', paciente)
+      })
+    },
+
+    updatePaciente({commit}, paciente){
+      db.collection('pacientes').doc(paciente.id).update({
+        nombre: paciente.nombre,
+        edad: paciente.edad,
+        cedula: paciente.cedula,
+        celular: paciente.celular,
+        direccionPaciente: paciente.direccionPaciente,
+        fechaNacimiento: paciente.fechaNacimiento,
+        direccionMuestra: paciente.direccionMuestra,
+        fechaMuestra: paciente.fechaMuestra,
+        email: paciente.email,
+        sintomas: paciente.sintomas,
+      }).then(doc =>{
+        console.log('paciente editado')
+      })
+    },
+
   },
   modules: {
   }
