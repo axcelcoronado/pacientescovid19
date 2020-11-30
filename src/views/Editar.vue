@@ -65,10 +65,12 @@ export default {
         "Taquipnea (Frecuencia respiratoria > 24 RPM",
         "Resequedad de los ojos y/o Lengua",
       ],
+      id: this.$route.params.id,
     };
   },
   created() {
-    this.getEditPaciente(this.$route.params.id);
+    this.getEditPaciente(this.id);
+   
   },
   methods: {
     ...mapActions(["updatePaciente", "getEditPaciente"]),

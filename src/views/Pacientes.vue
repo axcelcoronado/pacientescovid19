@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="card-footer d-flex justify-content-center">
-        <button class="btn btn-danger mx-2">Eliminar</button>
+        <button class="btn btn-danger mx-2" @click="deletPaciente(item.id)">Eliminar</button>
         <router-link :to="{name:'Editar', params:{id:item.id}}">
         <button class="btn btn-warning mx-2">Editar</button>
         </router-link>
@@ -58,7 +58,7 @@ export default {
     this.getPaciente();
   },
   methods: {
-    ...mapActions(["getPaciente"]),
+    ...mapActions(["getPaciente",'deletPaciente']),
   },
   computed: {
     ...mapState(["pacientes"]),

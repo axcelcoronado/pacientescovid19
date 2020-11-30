@@ -18,6 +18,18 @@ const routes = [
     name: 'Editar',
 
     component: () => import('../views/Editar.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+
+    component: () => import('../views/Login.vue')
+  },
+  {
+    path: '/registro',
+    name: 'Resgistro',
+
+    component: () => import('../views/Registro.vue')
   }
 ]
 
