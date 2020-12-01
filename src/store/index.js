@@ -1,9 +1,11 @@
 import router from '../router'
 import { createLogger, createStore } from 'vuex'
-import { db } from '../firebase'
+import { db, auth } from '../firebase'
 
 export default createStore({
   state: {
+    user: null,
+    error: null,
     pacientes: [],
     paciente: {
       nombre: "",
@@ -28,6 +30,13 @@ export default createStore({
     },
     setDeletePaciente(state, payload){
       state.pacientes = state.pacientes.filter(item => item.id !== payload)
+    },
+
+    setSingInUser(state, payload){
+      state.user = payload
+    },
+    setError(state, payload){
+      state.error = payload
     }
   },
   actions: {
@@ -104,8 +113,21 @@ export default createStore({
         commit('setDeletePaciente', idPaciente)
         // dispatch('getPaciente')
       })
+    },
+    getSingInUser({commit}, user){
+      auth.createUserWithEmailAndPassword(user.email, user.password)
+      .then(res=>{
+        let newUser = {
+          user: res.user.email,
+          uid: res.user.uid
+        }
+        commit('setSingInUse', newUser)
+      }).catch(error=>{
+        commit('setError', error)
+      })
     }
   },
+
   modules: {
   }
 })

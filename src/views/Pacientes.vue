@@ -18,10 +18,10 @@
         </div>
         <div class="row d-flex justify-content-around">
           <div class="col-ms-6">
-            <h5>Fecha de Muestra: {{ item.fechaMuestra }}</h5>
+            <h5>Fecha de Muestra: <span class="text-info">{{ item.fechaMuestra }}</span></h5>
           </div>
           <div class="col-ms-6">
-            <h5>Direccion de la Muestra: {{ item.DirrecionMuestra }}</h5>
+            <h5>Direccion de la Muestra: <span class="text-info">{{ item.direccionMuestra }}</span></h5>
           </div>
         </div>
         <div class="row d-flex justify-content-around">

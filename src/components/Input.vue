@@ -109,7 +109,7 @@
           class="form-control"
           id="Direccion de la Muestra"
           placeholder="Direccion de la Muestra..."
-          v-model="paciente.dirrecionMuestra"
+          v-model="paciente.direccionMuestra"
         />
       </div>
     </div>
