@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-body">
-      <form @click.prevent="getSingInUser({email: email, password: pass1})">
+      <form @click.prevent="getSingInUser({ email: email, password: pass1 })">
         <div class="form-group">
           <label for="email">Correo Electronico:</label>
           <input
@@ -20,38 +20,46 @@
               placeholder="Contraseña..."
               v-model="pass1"
             />
+            
+            
           </div>
         </div>
         <div class="form-group">
           <label for="passwd2">Repetir la Contraseña:</label>
           <input
-            type="Text"
+            type="password"
             class="form-control"
             id="passwd2"
             placeholder="Repetir la contraseña..."
-            v-model='pass2'
+            v-model="pass2"
           />
         </div>
-        <button class="btn btn-block bg-info text-white">Registrar usuario</button>
+        <button class="btn btn-block bg-info text-white" >
+          Registrar usuario
+        </button>
       </form>
-      <p>{{email}} - {{pass1}}</p>
+      <p>{{ email }} - {{ pass1 }}</p>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from "vuex";
 export default {
   data() {
     return {
-      email: '',
-      pass1: '',
-      pass2:'',
-    }
+      email: "",
+      pass1: "",
+      pass2: "",
+    };
   },
-  methods:{
-    ...mapActions(['getSingInUser'])
-  }
+  methods: {
+    ...mapActions(["getSingInUser"]),
+    // Desabilitar(){
+    //   return this.pass1 === this.pass2 && this.pass1.length > 6 && this.pass1.trim() !== ''
+    // }
+  },
+  
 };
 </script>
 

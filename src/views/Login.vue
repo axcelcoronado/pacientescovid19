@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-body">
-      <form>
+      <form @submit.prevent="setLoginUser({email: email, password:password})">
         <div class="form-group">
           <label for="Email">Correo Electronico</label>
           <input
@@ -27,7 +27,19 @@
 </template>
 
 <script>
-export default {};
+import { mapActions } from 'vuex';
+export default {
+  name: 'Login',
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods:{
+    ...mapActions(['setLoginUser'])
+  }
+};
 </script>
 
 <style>

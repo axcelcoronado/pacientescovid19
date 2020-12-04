@@ -125,9 +125,15 @@ export default createStore({
       }).catch(error=>{
         commit('setError', error)
       })
+    },
+    setLoginUser({commit}, user){
+      auth.signInWithEmailAndPassword(user.email, user.password).then(res=>{
+        console.log('user in login')
+      }).catch(error =>{
+        console.log(error);
+      })
     }
   },
-
   modules: {
   }
 })
